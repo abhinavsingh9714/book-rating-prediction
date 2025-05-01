@@ -63,7 +63,7 @@ def predict_user_user_rating(user_idx, item_idx, train_matrix, similarity_matrix
     users_who_rated = np.where(item_ratings > 0)[0]
 
     if len(users_who_rated) == 0:
-        print(f"⚠️ No users rated item {item_idx}")
+        # print(f"⚠️ No users rated item {item_idx}")
         return 0
 
     # Similarity between current user and those users
@@ -80,7 +80,7 @@ def predict_user_user_rating(user_idx, item_idx, train_matrix, similarity_matrix
     denominator = np.sum(np.abs(user_similarities))
 
     if denominator == 0:
-        print(f"⚠️ No similar users found for user {user_idx} and item {item_idx}.")
+        # print(f"⚠️ No similar users found for user {user_idx} and item {item_idx}.")
         return 0
 
     return numerator / denominator

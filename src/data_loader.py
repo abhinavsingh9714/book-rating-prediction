@@ -11,7 +11,7 @@ def load_data(data_dir="./data"):
     Returns:
         books_df, users_df, ratings_df
     """
-    print("📦 Loading datasets...")
+    print("Loading datasets...")
 
     books_path = os.path.join(data_dir, "Books.csv")
     users_path = os.path.join(data_dir, "Users.csv")
@@ -40,9 +40,9 @@ def load_data(data_dir="./data"):
         dtype={"User-ID": int, "ISBN": str, "Book-Rating": int}
     )
 
-    print("✅ Loaded books:", books_df.shape)
-    print("✅ Loaded users:", users_df.shape)
-    print("✅ Loaded ratings:", ratings_df.shape)
+    print("Loaded books:", books_df.shape)
+    print("Loaded users:", users_df.shape)
+    print("Loaded ratings:", ratings_df.shape)
     return books_df, users_df, ratings_df
 
 
@@ -51,7 +51,7 @@ def preprocess_ratings(ratings_df):
     Keep only explicit ratings (rating > 0)
     """
     cleaned = ratings_df[ratings_df['Book-Rating'] > 0].copy()
-    print(f"🧹 Filtered explicit ratings: {cleaned.shape}")
+    print(f"Filtered explicit ratings: {cleaned.shape}")
     return cleaned
 
 
@@ -59,13 +59,13 @@ def create_user_item_matrix(cleaned_ratings_df):
     """
     Create sparse user-item matrix (users as rows, ISBNs as columns)
     """
-    print("🔧 Creating user-item matrix...")
+    print("Creating user-item matrix...")
     matrix = cleaned_ratings_df.pivot_table(
         index='User-ID',
         columns='ISBN',
         values='Book-Rating'
     )
-    print("✅ Matrix shape:", matrix.shape)
+    print("Matrix shape:", matrix.shape)
     return matrix
 
 def create_sparse_user_item_matrix(cleaned_ratings_df):
@@ -74,7 +74,7 @@ def create_sparse_user_item_matrix(cleaned_ratings_df):
     Returns:
         sparse_matrix, user_encoder, item_encoder
     """
-    print("🔧 Creating sparse user-item matrix...")
+    print("Creating sparse user-item matrix...")
 
     user_encoder = LabelEncoder()
     item_encoder = LabelEncoder()
@@ -87,7 +87,7 @@ def create_sparse_user_item_matrix(cleaned_ratings_df):
         shape=(len(user_encoder.classes_), len(item_encoder.classes_))
     )
 
-    print(f"✅ Sparse matrix shape: {sparse_matrix.shape} | nnz: {sparse_matrix.nnz} ratings")
+    print(f"Sparse matrix shape: {sparse_matrix.shape} | nnz: {sparse_matrix.nnz} ratings")
     return sparse_matrix, user_encoder, item_encoder
 
 # if __name__ == "__main__":

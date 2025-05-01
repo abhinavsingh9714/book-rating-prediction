@@ -24,6 +24,6 @@ def mean_absolute_difference(test_set, train_matrix, similarity_matrix, k=10):
         errors.append(error)
 
     mad = np.mean(errors)
-    print(f"🎯 Mean Absolute Difference (k={k}): {mad:.4f}")
+    print(f"Mean Absolute Difference: {mad:.4f}")
     return mad
 

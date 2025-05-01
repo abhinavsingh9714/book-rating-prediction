@@ -46,7 +46,7 @@ def compute_topk_item_similarity(train_matrix, top_k=100, metric='cosine'):
     Efficiently compute top-k item-item similarity using NearestNeighbors on sparse data.
     Returns a sparse similarity matrix (item-item).
     """
-    print("⚡ Using NearestNeighbors to compute top-k item similarities...")
+    print("Using NearestNeighbors to compute top-k item similarities...")
 
     item_user_matrix = train_matrix.T  # shape: (n_items, n_users)
     model = NearestNeighbors(n_neighbors=top_k + 1,  # +1 to include self

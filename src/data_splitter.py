@@ -32,9 +32,9 @@ def split_train_test_sparse(sparse_matrix, test_ratio=0.25, seed=42):
     train_data = data[:cutoff]
     test_data = data[cutoff:]
 
-    print(f"📊 Total ratings: {len(data)}")
-    print(f"🧪 Test set size: {len(test_data)}")
-    print(f"🧩 Training set size: {len(train_data)}")
+    print(f"Total ratings: {len(data)}")
+    print(f"Test set size: {len(test_data)}")
+    print(f"Training set size: {len(train_data)}")
 
     # Build training sparse matrix
     train_user_ids, train_item_ids, train_ratings = zip(*train_data)
