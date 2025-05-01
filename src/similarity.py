@@ -68,34 +68,34 @@ def compute_topk_item_similarity(train_matrix, top_k=100, metric='cosine'):
 
     return similarity_matrix.tocsr()
 
-# def compute_user_similarity(train_matrix, top_k=100, metric='cosine'):
-#     """
-#     Compute top-k user-user cosine similarity matrix.
+def compute_user_similarity(train_matrix, top_k=100, metric='cosine'):
+    """
+    Compute top-k user-user cosine similarity matrix.
     
-#     Args:
-#         train_matrix (csr_matrix): User-item matrix
-#         top_k (int): Number of top similar users to retain
-#         cache_path (str): Optional path to cache/load similarity matrix
+    Args:
+        train_matrix (csr_matrix): User-item matrix
+        top_k (int): Number of top similar users to retain
+        cache_path (str): Optional path to cache/load similarity matrix
 
-#     Returns:
-#         similarity_matrix (csr_matrix)
-#     """
+    Returns:
+        similarity_matrix (csr_matrix)
+    """
 
-#     model = NearestNeighbors(n_neighbors=top_k + 1,  # +1 to include self
-#                              metric=metric,
-#                              algorithm='brute',
-#                              n_jobs=-1)
-#     model.fit(train_matrix)
+    model = NearestNeighbors(n_neighbors=top_k + 1,  # +1 to include self
+                             metric=metric,
+                             algorithm='brute',
+                             n_jobs=-1)
+    model.fit(train_matrix)
 
-#     distances, indices = model.kneighbors(train_matrix)
+    distances, indices = model.kneighbors(train_matrix)
 
-#     # Build a sparse matrix manually
+    # Build a sparse matrix manually
 
-#     n_users = train_matrix.shape[0]
-#     similarity_matrix = lil_matrix((n_users, n_users))
+    n_users = train_matrix.shape[0]
+    similarity_matrix = lil_matrix((n_users, n_users))
 
-#     for i in range(n_users):
-#         for j in range(1, top_k + 1):  # skip self (index 0)
-#             similarity_matrix[i, indices[i, j]] = 1 - distances[i, j]  # similarity = 1 - distance
+    for i in range(n_users):
+        for j in range(1, top_k + 1):  # skip self (index 0)
+            similarity_matrix[i, indices[i, j]] = 1 - distances[i, j]  # similarity = 1 - distance
 
-#     return similarity_matrix.tocsr()
+    return similarity_matrix.tocsr()

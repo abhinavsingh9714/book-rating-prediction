@@ -1,4 +1,4 @@
-from src.predictor import predict_rating
+from src.predictor import predict_rating, predict_user_user_rating
 import numpy as np
 
 
