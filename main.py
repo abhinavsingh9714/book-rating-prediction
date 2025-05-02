@@ -6,6 +6,8 @@ from src.evaluation import mean_absolute_difference
 import os
 from scipy.sparse import save_npz, load_npz
 import matplotlib.pyplot as plt
+
+
 print('-' * 50)
 print("Step 1: Data Loading and Preprocessing\n")
 books, users, ratings = load_data()

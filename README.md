@@ -93,6 +93,27 @@ This will:
 
 ---
 
+## Feature Representation
+Although the core model is based on item-item collaborative filtering (which uses only the sparse user-item rating matrix), I explored the metadata provided for both books and users:
+
+- Book features: Book-Title, Book-Author, Year-Of-Publication, Publisher
+
+- User features: Location, Age
+
+While these features were not directly used in the similarity-based CF model, they could be leveraged in the following ways:
+
+- Content-based filtering: Embedding book titles/authors using TF-IDF or BERT
+
+- Cold-start handling: Using user age or location to estimate preferences
+
+- Hybrid systems: Combining CF-based similarity with metadata similarity
+
+Additionally, I cleaned the Age feature (e.g., removed outliers, filled missing with median) and analyzed the distribution of publication years for books.
+
+These features were retained in the dataset and could be used for future enhancements or hybrid recommendations.
+
+---
+
 ## Limitations & Future Work
 
 - Cold-start users/items remain challenging due to lack of rating history.
