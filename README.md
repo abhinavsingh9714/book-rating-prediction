@@ -10,15 +10,15 @@ This project builds a memory-based **item-item collaborative filtering** recomme
 book-rating-prediction/
 │
 ├── data/                  # Raw CSV files: Books.csv, Users.csv, Ratings.csv
-├── notebooks/             # Jupyter notebooks (EDA, experiments)
 ├── src/                   # Source code modules
 │   ├── data_loader.py         # Data loading and preprocessing
 │   ├── data_splitter.py       # Train/test splitting
 │   ├── similarity.py          # Item-user similarity computation
 │   ├── predictor.py           # Rating prediction logic
 │   └── evaluation.py          # Evaluation metrics (MAD)
-├── experiments/           # Batch experiments for k-values and train ratios
 ├── results/               # Stores plots and MAE logs
+|   ├── Figure_1.png           # MAE vs Neighborhood size
+│   └── Figure_2.png           # MAE vs Train-to-Test Ratios
 ├── main.py                # CLI entry point: runs full pipeline
 ├── requirements.txt
 └── README.md              # You're here!
